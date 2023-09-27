@@ -59,7 +59,7 @@ function playerTurn(gameTile, row, diagonal1, diagonal2) {
         if (GameLogic.checkRow(row, currentPlayer.playerSymbol) || 
             GameLogic.checkCross(diagonal1, currentPlayer.playerSymbol) || 
             GameLogic.checkCross(diagonal2, currentPlayer.playerSymbol)) {
-          alert(`${currentPlayer.playerName} has three in a row`);
+          console.log(`${currentPlayer.playerName} has three in a row`);
         } else {
           currentPlayer = (currentPlayer === player1) ? player2 : player1;
           console.log(currentPlayer);
