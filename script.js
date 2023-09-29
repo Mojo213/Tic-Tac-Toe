@@ -40,6 +40,7 @@ const playerFactoryModule = (() => {
 
 // Game Logic Module
 const gameLogicModule = (() => {
+
   function checkRow(row, symbol) {
     let count = 0;
     for (let i = 0; i < row.length; i++) {
@@ -54,6 +55,7 @@ const gameLogicModule = (() => {
     }
     return false;
   }
+  
 
   function checkCross(cross, symbol) {
     let count = 0;
@@ -98,23 +100,31 @@ const gameControllerModule = (() => {
   const player2 = playerFactoryModule.createPlayer('player2', 'O');
   let currentPlayer = player1;
 
-  function playerTurn(gameTile, row, diagonal1, diagonal2, column) {
+  function playerTurn(gameTile, row1, row2, row3, diagonal1, diagonal2, column) {
+    let moves = 0;
+  
     for (let i = 0; i < gameTile.length; i++) {
       gameTile[i].addEventListener('click', (event) => {
         if (gameTile[i].textContent === '') {
           const clickedTile = event.target;
           clickedTile.textContent = currentPlayer.playerSymbol;
-
+          moves++;
+  
           if (
-            gameLogicModule.checkRow(row, currentPlayer.playerSymbol) ||
+            gameLogicModule.checkRow(row1, currentPlayer.playerSymbol) ||
+            gameLogicModule.checkRow(row2, currentPlayer.playerSymbol) ||
+            gameLogicModule.checkRow(row3, currentPlayer.playerSymbol) ||
             gameLogicModule.checkCross(diagonal1, currentPlayer.playerSymbol) ||
             gameLogicModule.checkCross(diagonal2, currentPlayer.playerSymbol) ||
             gameLogicModule.checkColumn(column, currentPlayer.playerSymbol)
           ) {
-            console.log(`${currentPlayer.playerName} has three in a row`);
+            console.log(`${currentPlayer.playerName} has won`);
+          } else if (moves === 9) {
+            console.log('It\'s a tie!');
           } else {
+            console.log(currentPlayer.playerName, currentPlayer.playerSymbol);
             currentPlayer = currentPlayer === player1 ? player2 : player1;
-            console.log(currentPlayer);
+            console.log(currentPlayer.playerName, currentPlayer.playerSymbol);
           }
         } else {
           console.log('Tile already has a value');
@@ -122,6 +132,8 @@ const gameControllerModule = (() => {
       });
     }
   }
+  
+  
 
   return {
     playerTurn,
@@ -131,7 +143,11 @@ const gameControllerModule = (() => {
 // Initialize the Game
 gameBoardModule.createTiles();
 const someGameTile = gameBoardModule.tileArray;
-const row = gameBoardModule.tileArray;
+
+const row1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[1], gameBoardModule.tileArray[2]];
+const row2 = [gameBoardModule.tileArray[3], gameBoardModule.tileArray[4], gameBoardModule.tileArray[5]];
+const row3 = [gameBoardModule.tileArray[6], gameBoardModule.tileArray[7], gameBoardModule.tileArray[8]];
+
 const diagonal1 = [
   gameBoardModule.tileArray[0],
   gameBoardModule.tileArray[4],
@@ -142,6 +158,8 @@ const diagonal2 = [
   gameBoardModule.tileArray[4],
   gameBoardModule.tileArray[6],
 ];
+
+
 const column = [
   gameBoardModule.tileArray[0],
   gameBoardModule.tileArray[3],
@@ -151,7 +169,10 @@ const column = [
   gameBoardModule.tileArray[7],
   gameBoardModule.tileArray[2],
   gameBoardModule.tileArray[5],
-  gameBoardModule.tileArray[8],
-];
+  gameBoardModule.tileArray[8]
+  ];
 
-gameControllerModule.playerTurn(someGameTile, row, diagonal1, diagonal2, column);
+
+
+gameControllerModule.playerTurn(someGameTile, row1, row2, row3, diagonal1, diagonal2, column);
+ 
