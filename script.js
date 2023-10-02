@@ -149,7 +149,6 @@ const alertWin = (function() {
   const winnerMessage = document.getElementById('winnerMessage');
   const closeBtn = document.getElementById('closeBtn');
   const playAgainBtn = document.getElementById('playAgainBtn');
-  const btnContainer = document.querySelector('.btnContainer');
   const newGame = document.getElementById('newGame');
 
   closeBtn.addEventListener('click', () => {
