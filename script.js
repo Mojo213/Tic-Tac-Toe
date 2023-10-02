@@ -206,9 +206,5 @@ column3,
 
 
 })();
-
-
-
-
 gameControllerModule.playerTurn(test.someGameTile, test.row1, test.row2, test.row3, test.diagonal1, test.diagonal2, test.column1, test.column2, test.column3);
  
