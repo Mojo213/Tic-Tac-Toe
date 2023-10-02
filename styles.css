@@ -64,6 +64,14 @@ body{
   .btnContainer{
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
   }
   
+  h1{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding: 2px;
+  }
+
+ 

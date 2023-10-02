@@ -3,10 +3,10 @@ const gameBoardModule = (() => {
   const tileArray = [];
 
   function createTiles() {
-    const body = document.querySelector('body');
+    const gameBoardContainer = document.querySelector('.gameBoardContainer');
     const container = document.createElement('div');
     container.classList.add('game-container');
-    body.appendChild(container);
+    gameBoardContainer.appendChild(container);
     for (let i = 0; i < 9; i++) {
       const gameTile = document.createElement('div');
       gameTile.classList.add('game-tile');
