@@ -124,9 +124,9 @@ const gameControllerModule = (() => {
             gameLogicModule.checkColumn(column2, currentPlayer.playerSymbol)||
             gameLogicModule.checkColumn(column3, currentPlayer.playerSymbol)
             ) {
-            console.log(`${currentPlayer.playerName} has won`);
+            alertWin.showCustomAlert(`${currentPlayer.playerName} has won`);
           } else if (moves === 9) {
-            console.log('It\'s a tie!');
+            alertWin.showCustomAlert('It\'s a tie!');
           } else {
             console.log(currentPlayer.playerName, currentPlayer.playerSymbol);
             currentPlayer = currentPlayer === player1 ? player2 : player1;
@@ -145,6 +145,45 @@ const gameControllerModule = (() => {
     playerTurn,
   };
 })();
+
+// Custom Alert Module 
+const alertWin = (function() {
+  const customAlert = document.getElementById('customAlert');
+  const winnerMessage = document.getElementById('winnerMessage');
+  const closeBtn = document.getElementById('closeBtn');
+  const playAgainBtn = document.getElementById('playAgainBtn');
+  const btnContainer = document.querySelector('.btnContainer');
+  const newGame = document.getElementById('newGame');
+
+  closeBtn.addEventListener('click', () => {
+    customAlert.style.display = 'none';
+    btnContainer.style.display = 'flex'; 
+  });
+
+  playAgainBtn.addEventListener('click', () => {
+    window.location.reload();
+  });
+
+  newGame.addEventListener('click', () => {
+    window.location.reload();
+  })
+
+  function showCustomAlert(message) {
+    winnerMessage.textContent = message;
+    customAlert.style.display = 'flex';
+  }
+
+  function closeCustomAlert() {
+    customAlert.style.display = 'none'; 
+  }
+
+  return {
+    showCustomAlert,
+    closeCustomAlert,
+  };
+})();
+
+
 
 // Initialize the Game
 gameBoardModule.createTiles();
