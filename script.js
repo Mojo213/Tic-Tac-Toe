@@ -154,7 +154,6 @@ const alertWin = (function() {
 
   closeBtn.addEventListener('click', () => {
     customAlert.style.display = 'none';
-    btnContainer.style.display = 'flex'; 
   });
 
   playAgainBtn.addEventListener('click', () => {
