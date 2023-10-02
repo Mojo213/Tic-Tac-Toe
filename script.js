@@ -50,7 +50,6 @@ const gameLogicModule = (() => {
         count = 0;
       }
       if (count === 3) {
-        console.log('row win');
         return true;
       }
     }
@@ -67,7 +66,6 @@ const gameLogicModule = (() => {
         count = 0;
       }
       if (count === 3) {
-        console.log('cross win');
         return true;
         
       }
@@ -84,7 +82,6 @@ const gameLogicModule = (() => {
         count = 0;
       }
       if (count === 3) {
-        console.log('column win')
         return true;
       }
     }
@@ -128,9 +125,9 @@ const gameControllerModule = (() => {
           } else if (moves === 9) {
             alertWin.showCustomAlert('It\'s a tie!');
           } else {
-            console.log(currentPlayer.playerName, currentPlayer.playerSymbol);
+            currentPlayer.playerName, currentPlayer.playerSymbol;
             currentPlayer = currentPlayer === player1 ? player2 : player1;
-            console.log(currentPlayer.playerName, currentPlayer.playerSymbol);
+            currentPlayer.playerName, currentPlayer.playerSymbol;
           }
         } else {
           console.log('Tile already has a value');
