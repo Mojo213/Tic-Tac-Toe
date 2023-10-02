@@ -121,7 +121,7 @@ const gameControllerModule = (() => {
             gameLogicModule.checkColumn(column2, currentPlayer.playerSymbol)||
             gameLogicModule.checkColumn(column3, currentPlayer.playerSymbol)
             ) {
-            alertWin.showCustomAlert(`${currentPlayer.playerName} has won`);
+            alertWin.showCustomAlert(`${currentPlayer.playerName} ${currentPlayer.playerSymbol} has won`);
           } else if (moves === 9) {
             alertWin.showCustomAlert('It\'s a tie!');
           } else {
@@ -130,7 +130,7 @@ const gameControllerModule = (() => {
             currentPlayer.playerName, currentPlayer.playerSymbol;
           }
         } else {
-          console.log('Tile already has a value');
+          alertWin.showCustomAlert('Tile already has a value');
         }
       });
     }
@@ -148,15 +148,10 @@ const alertWin = (function() {
   const customAlert = document.getElementById('customAlert');
   const winnerMessage = document.getElementById('winnerMessage');
   const closeBtn = document.getElementById('closeBtn');
-  const playAgainBtn = document.getElementById('playAgainBtn');
   const newGame = document.getElementById('newGame');
 
   closeBtn.addEventListener('click', () => {
     customAlert.style.display = 'none';
-  });
-
-  playAgainBtn.addEventListener('click', () => {
-    window.location.reload();
   });
 
   newGame.addEventListener('click', () => {
@@ -182,21 +177,38 @@ const alertWin = (function() {
 
 // Initialize the Game
 gameBoardModule.createTiles();
-const someGameTile = gameBoardModule.tileArray;
+const test = (function () {
+  const someGameTile = gameBoardModule.tileArray;
 
-const row1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[1], gameBoardModule.tileArray[2]];
-const row2 = [gameBoardModule.tileArray[3], gameBoardModule.tileArray[4], gameBoardModule.tileArray[5]];
-const row3 = [gameBoardModule.tileArray[6], gameBoardModule.tileArray[7], gameBoardModule.tileArray[8]];
+  const row1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[1], gameBoardModule.tileArray[2]];
+  const row2 = [gameBoardModule.tileArray[3], gameBoardModule.tileArray[4], gameBoardModule.tileArray[5]];
+  const row3 = [gameBoardModule.tileArray[6], gameBoardModule.tileArray[7], gameBoardModule.tileArray[8]];
+  
+  const diagonal1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[4], gameBoardModule.tileArray[8]];
+  const diagonal2 = [gameBoardModule.tileArray[2], gameBoardModule.tileArray[4], gameBoardModule.tileArray[6]];
+  
+  
+  const column1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[3], gameBoardModule.tileArray[6]];
+  const column2 = [gameBoardModule.tileArray[1], gameBoardModule.tileArray[4], gameBoardModule.tileArray[7]];
+  const column3 = [gameBoardModule.tileArray[2], gameBoardModule.tileArray[5], gameBoardModule.tileArray[8]];
+  
+return{
+someGameTile,
+row1,
+row2,
+row3,
+diagonal1,
+diagonal2,
+column1,
+column2,
+column3,
+}
 
-const diagonal1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[4], gameBoardModule.tileArray[8]];
-const diagonal2 = [gameBoardModule.tileArray[2], gameBoardModule.tileArray[4], gameBoardModule.tileArray[6]];
 
-
-const column1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[3], gameBoardModule.tileArray[6]];
-const column2 = [gameBoardModule.tileArray[1], gameBoardModule.tileArray[4], gameBoardModule.tileArray[7]];
-const column3 = [gameBoardModule.tileArray[2], gameBoardModule.tileArray[5], gameBoardModule.tileArray[8]];
+})();
 
 
 
-gameControllerModule.playerTurn(someGameTile, row1, row2, row3, diagonal1, diagonal2, column1, column2, column3);
+
+gameControllerModule.playerTurn(test.someGameTile, test.row1, test.row2, test.row3, test.diagonal1, test.diagonal2, test.column1, test.column2, test.column3);
  
