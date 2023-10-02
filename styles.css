@@ -28,14 +28,14 @@ body{
     align-items: center;
     width: 100px;
     height: 100px;
-    background-color: rgb(220, 212, 212);
+    background-color:rgb(233, 233, 233);
     border: solid rgb(228, 223, 223) 2px;
     transition: transform 0.2s; 
     border-radius: 10px;
   }
   
   .game-tile:hover {
-    background-color: rgb(236, 228, 213);
+    background-color: rgb(166, 236, 145);
     transform: translateY(-4px); 
   }
   
@@ -68,6 +68,7 @@ body{
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
+    font-size: 1rem;
   }
 
   .btnContainer{
