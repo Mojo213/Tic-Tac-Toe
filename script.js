@@ -97,8 +97,8 @@ const gameLogicModule = (() => {
 
 // Game Controller Module
 const gameControllerModule = (() => {
-  const player1 = playerFactoryModule.createPlayer('player1', 'X');
-  const player2 = playerFactoryModule.createPlayer('player2', 'O');
+  const player1 = playerFactoryModule.createPlayer('Player1', 'X');
+  const player2 = playerFactoryModule.createPlayer('Player2', 'O');
   let currentPlayer = player1;
 
   function playerTurn(gameTile, row1, row2, row3, diagonal1, diagonal2, column1, column2, column3) {
