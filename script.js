@@ -177,34 +177,17 @@ const alertWin = (function() {
 
 // Initialize the Game
 gameBoardModule.createTiles();
-const test = (function () {
-  const someGameTile = gameBoardModule.tileArray;
 
-  const row1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[1], gameBoardModule.tileArray[2]];
-  const row2 = [gameBoardModule.tileArray[3], gameBoardModule.tileArray[4], gameBoardModule.tileArray[5]];
-  const row3 = [gameBoardModule.tileArray[6], gameBoardModule.tileArray[7], gameBoardModule.tileArray[8]];
-  
-  const diagonal1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[4], gameBoardModule.tileArray[8]];
-  const diagonal2 = [gameBoardModule.tileArray[2], gameBoardModule.tileArray[4], gameBoardModule.tileArray[6]];
-  
-  
-  const column1 = [gameBoardModule.tileArray[0], gameBoardModule.tileArray[3], gameBoardModule.tileArray[6]];
-  const column2 = [gameBoardModule.tileArray[1], gameBoardModule.tileArray[4], gameBoardModule.tileArray[7]];
-  const column3 = [gameBoardModule.tileArray[2], gameBoardModule.tileArray[5], gameBoardModule.tileArray[8]];
-  
-return{
-someGameTile,
-row1,
-row2,
-row3,
-diagonal1,
-diagonal2,
-column1,
-column2,
-column3,
-}
+const winConditions = [
+  gameBoardModule.tileArray.slice(0, 3), // Rows
+  gameBoardModule.tileArray.slice(3, 6),
+  gameBoardModule.tileArray.slice(6),
+  [gameBoardModule.tileArray[0], gameBoardModule.tileArray[3], gameBoardModule.tileArray[6]], // Columns
+  [gameBoardModule.tileArray[1], gameBoardModule.tileArray[4], gameBoardModule.tileArray[7]],
+  [gameBoardModule.tileArray[2], gameBoardModule.tileArray[5], gameBoardModule.tileArray[8]],
+  [gameBoardModule.tileArray[0], gameBoardModule.tileArray[4], gameBoardModule.tileArray[8]], // Diagonals
+  [gameBoardModule.tileArray[2], gameBoardModule.tileArray[4], gameBoardModule.tileArray[6]],
+];
 
-
-})();
-gameControllerModule.playerTurn(test.someGameTile, test.row1, test.row2, test.row3, test.diagonal1, test.diagonal2, test.column1, test.column2, test.column3);
+gameControllerModule.playerTurn(gameBoardModule.tileArray, ...winConditions);
  
