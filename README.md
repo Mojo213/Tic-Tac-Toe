@@ -2,6 +2,9 @@
 
 A simple web-based Tic-Tac-Toe game built using HTML, CSS, and JavaScript.
 
+<img width="1512" alt="Screenshot 2023-10-04 at 22 46 32" src="https://github.com/Mojo213/Tic-Tac-Toe/assets/104395212/27b256dd-3f32-4a66-9a3c-77d9d79882df">
+<img width="1501" alt="Screenshot 2023-10-04 at 22 47 09" src="https://github.com/Mojo213/Tic-Tac-Toe/assets/104395212/6f3aa640-b5de-4745-8d59-88940081161e">
+
 ## Features
 
 - Play Tic-Tac-Toe against a friend.
